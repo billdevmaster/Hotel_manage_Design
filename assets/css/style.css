@@ -22,3 +22,20 @@ table .thead-main tr th {
 .calendar-section .calendar_content.none {
 	display: none;
 }
+
+.sm-hidden {
+	display: block;
+}
+
+.sm-block {
+	display: none;
+}
+
+@media(max-width: 768px) {
+	.sm-hidden {
+		display: none;
+	}
+	.sm-block {
+		display: block;
+	}
+}
