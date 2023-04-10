@@ -25,12 +25,17 @@
             } else {
                 var shownDate = calMonthArray[cell].day;
                 var iter_date = new Date(passed_year, passed_month, shownDate);
+                
                 if (
                 (
                 (shownDate != today.getDate() && passed_month == today.getMonth()) || passed_month != today.getMonth()) && iter_date < today) {
                     var m = '<div class="past-date">';
                 } else {
                     var m = checkToday(iter_date) ? '<div class="today">' : "<div>";
+                }
+
+                if (shownDate == selectedDate.date && passed_month == selectedDate.month && passed_year == selectedDate.year) {
+                    var m = '<div class="selected">';
                 }
                 calendar.datesBody.append(m + shownDate + "</div>");
             }
@@ -41,8 +46,6 @@
         calendar.weekline.find("div").css("color", color);
         calendar.datesBody.find(".today").css("color", "#00bdaa");
 
-       
-
         // find elements (dates) to be clicked on each time
         // the calendar is generated
         var clicked = false;
@@ -51,80 +54,89 @@
         clickedElement = calendar.datesBody.find('div');
         clickedElement.on("click", function () {
             clicked = $(this);
+            calendar.datesBody.find('div').removeClass("selected");
             var whichCalendar = calendar.name;
+            const clickedInfo = getClickedInfo(clicked, calendar);
+            selectedDate = clickedInfo;
+            clicked.addClass("selected");
+            // firstClick = true;
+            // secondClick = true;
+            // console.log(firstClick)
+            // if (firstClick && secondClick) {
+            //     console.log("first")
+            //     thirdClicked = getClickedInfo(clicked, calendar);
+            //     var firstClickDateObj = new Date(firstClicked.year,
+            //     firstClicked.month,
+            //     firstClicked.date);
+            //     var secondClickDateObj = new Date(secondClicked.year,
+            //     secondClicked.month,
+            //     secondClicked.date);
+            //     var thirdClickDateObj = new Date(thirdClicked.year,
+            //     thirdClicked.month,
+            //     thirdClicked.date);
+            //     if (secondClickDateObj > thirdClickDateObj && thirdClickDateObj > firstClickDateObj) {
+            //         secondClicked = thirdClicked;
+            //         // then choose dates again from the start :)
+            //         bothCals.find(".calendar_content").find("div").each(function () {
+            //             $(this).removeClass("selected");
+            //         });
+            //         selected = {};
+            //         selected[firstClicked.year] = {};
+            //         selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
+            //         selected = addChosenDates(firstClicked, secondClicked, selected);
+            //     } else { // reset clicks
+            //         selected = {};
+            //         firstClicked = [];
+            //         secondClicked = [];
+            //         firstClick = false;
+            //         secondClick = false;
+            //         bothCals.find(".calendar_content").find("div").each(function () {
+            //             $(this).removeClass("selected");
+            //         });
+            //     }
+            // }
+            // if (!firstClick) {
+            //     console.log("second")
+            //     firstClick = true;
+            //     firstClicked = getClickedInfo(clicked, calendar);
+            //     selected[firstClicked.year] = {};
+            //     selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
+            // } else {
+            //     console.log("third")
+            //     secondClick = true;
+            //     secondClicked = getClickedInfo(clicked, calendar);
 
-            if (firstClick && secondClick) {
-                thirdClicked = getClickedInfo(clicked, calendar);
-                var firstClickDateObj = new Date(firstClicked.year,
-                firstClicked.month,
-                firstClicked.date);
-                var secondClickDateObj = new Date(secondClicked.year,
-                secondClicked.month,
-                secondClicked.date);
-                var thirdClickDateObj = new Date(thirdClicked.year,
-                thirdClicked.month,
-                thirdClicked.date);
-                if (secondClickDateObj > thirdClickDateObj && thirdClickDateObj > firstClickDateObj) {
-                    secondClicked = thirdClicked;
-                    // then choose dates again from the start :)
-                    bothCals.find(".calendar_content").find("div").each(function () {
-                        $(this).removeClass("selected");
-                    });
-                    selected = {};
-                    selected[firstClicked.year] = {};
-                    selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
-                    selected = addChosenDates(firstClicked, secondClicked, selected);
-                } else { // reset clicks
-                    selected = {};
-                    firstClicked = [];
-                    secondClicked = [];
-                    firstClick = false;
-                    secondClick = false;
-                    bothCals.find(".calendar_content").find("div").each(function () {
-                        $(this).removeClass("selected");
-                    });
-                }
-            }
-            if (!firstClick) {
-                firstClick = true;
-                firstClicked = getClickedInfo(clicked, calendar);
-                selected[firstClicked.year] = {};
-                selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
-            } else {
-                secondClick = true;
-                secondClicked = getClickedInfo(clicked, calendar);
+            //     // what if second clicked date is before the first clicked?
+            //     var firstClickDateObj = new Date(firstClicked.year,
+            //     firstClicked.month,
+            //     firstClicked.date);
+            //     var secondClickDateObj = new Date(secondClicked.year,
+            //     secondClicked.month,
+            //     secondClicked.date);
 
-                // what if second clicked date is before the first clicked?
-                var firstClickDateObj = new Date(firstClicked.year,
-                firstClicked.month,
-                firstClicked.date);
-                var secondClickDateObj = new Date(secondClicked.year,
-                secondClicked.month,
-                secondClicked.date);
+            //     if (firstClickDateObj > secondClickDateObj) {
 
-                if (firstClickDateObj > secondClickDateObj) {
+            //         var cachedClickedInfo = secondClicked;
+            //         secondClicked = firstClicked;
+            //         firstClicked = cachedClickedInfo;
+            //         selected = {};
+            //         selected[firstClicked.year] = {};
+            //         selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
 
-                    var cachedClickedInfo = secondClicked;
-                    secondClicked = firstClicked;
-                    firstClicked = cachedClickedInfo;
-                    selected = {};
-                    selected[firstClicked.year] = {};
-                    selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
-
-                } else if (firstClickDateObj.getTime() == secondClickDateObj.getTime()) {
-                    selected = {};
-                    firstClicked = [];
-                    secondClicked = [];
-                    firstClick = false;
-                    secondClick = false;
-                    $(this).removeClass("selected");
-                }
+            //     } else if (firstClickDateObj.getTime() == secondClickDateObj.getTime()) {
+            //         selected = {};
+            //         firstClicked = [];
+            //         secondClicked = [];
+            //         firstClick = false;
+            //         secondClick = false;
+            //         $(this).removeClass("selected");
+            //     }
 
 
-                // add between dates to [selected]
-                selected = addChosenDates(firstClicked, secondClicked, selected);
-            }
-            selectDates(selected);
+            //     // add between dates to [selected]
+            //     selected = addChosenDates(firstClicked, secondClicked, selected);
+            // }
+            // selectDates(selected);
         });
 
        
@@ -280,6 +292,7 @@
     var firstClick = false;
     var secondClick = false;
     var selected = {};
+    var selectedDate = {date: new Date().getDate(), month: new Date().getMonth(), year: new Date().getFullYear()};
 
     b();
     c(month, year, 0);
@@ -287,6 +300,7 @@
     if (window.matchMedia("(max-width: 767px)").matches) { 
         weekline1.addClass("none");
         datesBody1.addClass("none");
+        HeaderTitle.text(selectedDate.date + " " + HeaderTitle.text())
     }
     switchButton.on("click", function () {
         var clicked = $(this);
@@ -316,9 +330,14 @@
             if (weekline1.hasClass("none")) {
                 weekline1.removeClass("none")
                 datesBody1.removeClass("none")
+                var arr = HeaderTitle.text().split(" ");
+                HeaderTitle.text(arr[1] + " " + arr[2])
             } else {
                 weekline1.addClass("none")
                 datesBody1.addClass("none")
+                var arr = HeaderTitle.text().split(" ");
+                HeaderTitle.text(selectedDate.date + " " + HeaderTitle.text())
+                // console.log(HeaderTitle.text())
             }
         }
     })
