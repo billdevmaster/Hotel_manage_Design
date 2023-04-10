@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+  <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="PIXINVENT">
+  <title>App calendar - Vuexy - Bootstrap HTML admin template</title>
+  <link rel="apple-touch-icon" href="./app-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./app-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- BEGIN: Vendor CSS-->
+  <link rel="stylesheet" type="text/css" href="./app-assets/vendors/css/vendors.min.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/vendors/css/calendars/fullcalendar.min.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/vendors/css/forms/select/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+  <!-- END: Vendor CSS-->
+
+  <!-- BEGIN: Theme CSS-->
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/bootstrap-extended.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/colors.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/components.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/themes/dark-layout.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/themes/bordered-layout.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/themes/semi-dark-layout.css">
+
+  <!-- BEGIN: Page CSS-->
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/plugins/forms/pickers/form-flat-pickr.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/pages/app-calendar.css">
+  <link rel="stylesheet" type="text/css" href="./app-assets/css/plugins/forms/form-validation.css">
+  <!-- END: Page CSS-->
+
+  <!-- BEGIN: Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/calendar.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/responsive-table.css">
+  <!-- END: Custom CSS-->
+</head>
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
+  <!-- BEGIN: Header-->
+  <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow">
+    <div class="navbar-container d-flex content">
+      <div class="bookmark-wrapper d-flex align-items-center">
+        <ul class="nav navbar-nav d-xl-none">
+          <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i class="ficon" data-feather="menu"></i></a></li>
+        </ul>
+      </div>
+      <ul class="nav navbar-nav align-items-center ml-auto">
+        <li class="nav-item dropdown dropdown-user">
+          <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="user-nav d-sm-flex d-none">
+              <span class="user-name font-weight-bolder">Bill Dev</span>
+              <span class="user-status">Admin</span>
+            </div>
+            <span class="avatar">
+              <img class="round" src="./app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+            <a class="dropdown-item" href="login.html"><i class="mr-50" data-feather="power"></i> Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- END: Header-->
+
+  <!-- BEGIN: Main Menu-->
+  <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+      <ul class="nav navbar-nav flex-row">
+        <li class="nav-item mr-auto">
+          <a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html">
+            <span class="brand-logo"></span>
+            <h2 class="brand-text">App Name</h2>
+          </a>
+        </li>
+        <li class="nav-item nav-toggle">
+          <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <div class="main-menu-content">
+      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+        <li class=" nav-item">
+          <a class="d-flex align-items-center" href=""><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="menu">Menu1</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END: Main Menu-->
+
+  <!-- BEGIN: Content-->
+  <div class="app-content content ">
+  <div class="content-overlay"></div>
+  <div class="header-navbar-shadow"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+    </div>
+    <div class="content-body">
+      <div class="row">
+        <div class="col-md-4">
+          <section class="calendar-section">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="calendar calendar-first" id="calendar_first">
+                  <div class="calendar_header">
+                      <button class="switch-month switch-left"> <i class="fa fa-chevron-left"></i></button>
+                       <h2></h2>
+                      <button class="switch-month switch-right"> <i class="fa fa-chevron-right"></i></button>
+                  </div>
+                  <div class="calendar_weekdays"></div>
+                  <div class="calendar_content"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-8">
+          <table class="table table-responsive-stack table-fixed bg-white" id="tableOne" style="margin-top: 60px;">
+            <thead class="thead-main">
+              <tr>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Taste</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apple</td>
+                <td>Green and Red</td>
+                <td>Sweet and Tart</td>
+              </tr>
+              <tr>
+                <td>Banana</td>
+                <td>Yellow</td>
+                <td>Sweet and Mushy</td>
+              </tr>
+              <tr>
+                <td>Mango</td>
+                <td>Yellowish Green</td>
+                <td>Tangy</td>
+              </tr>
+              <tr>
+                <td>Orange</td>
+                <td>Orange</td>
+                <td>Sweet and Tangy</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="basicSelect">Service Providers</label>
+            <select class="form-control" id="basicSelect">
+              <option>IT</option>
+              <option>Blade Runner</option>
+              <option>Thor Ragnarok</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="basicSelect">Locations</label>
+            <select class="form-control" id="basicSelect">
+              <option>IT</option>
+              <option>Blade Runner</option>
+              <option>Thor Ragnarok</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <table class="table table-responsive-stack bg-white" id="tableTwo">
+            <thead class="thead-main">
+              <tr>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Taste</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apple</td>
+                <td>Green and Red</td>
+                <td>Sweet and Tart</td>
+              </tr>
+              <tr>
+                <td>Banana</td>
+                <td>Yellow</td>
+                <td>Sweet and Mushy</td>
+              </tr>
+              <tr>
+                <td>Mango</td>
+                <td>Yellowish Green</td>
+                <td>Tangy</td>
+              </tr>
+              <tr>
+                <td>Orange</td>
+                <td>Orange</td>
+                <td>Sweet and Tangy</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+              <tr>
+                <td>Blueberry</td>
+                <td>Blue</td>
+                <td>Mild Sweetness</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <!-- END: Content-->
+
+  <div class="sidenav-overlay"></div>
+  <div class="drag-target"></div>
+
+  <!-- BEGIN: Footer-->
+  <footer class="footer footer-static footer-light">
+    <p class="clearfix mb-0">
+      <span class="float-md-left d-block d-md-inline-block mt-25">
+        COPYRIGHT &copy; 2021
+        <span class="d-none d-sm-inline-block">, All rights Reserved</span></span>
+    </p>
+  </footer>
+  <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+  <!-- END: Footer-->
+
+  <!-- BEGIN: Vendor JS-->
+  <script src="./app-assets/vendors/js/vendors.min.js"></script>
+  <!-- BEGIN Vendor JS-->
+
+  <!-- BEGIN: Page Vendor JS-->
+  <script src="./app-assets/vendors/js/calendar/fullcalendar.min.js"></script>
+  <script src="./app-assets/vendors/js/extensions/moment.min.js"></script>
+  <script src="./app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+  <script src="./app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+  <script src="./app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+  <!-- END: Page Vendor JS-->
+
+  <!-- BEGIN CustomJS-->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/responsive-table.js"></script>
+  <!-- END CustomJS-->
+
+  <!-- BEGIN: Theme JS-->
+  <script src="./app-assets/js/core/app-menu.js"></script>
+  <script src="./app-assets/js/core/app.js"></script>
+  <!-- END: Theme JS-->
+
+  <script>
+    $(window).on('load', function() {
+      if (feather) {
+        feather.replace({
+          width: 14,
+          height: 14
+        });
+      }
+    })
+  </script>
+</body>
+</html>
