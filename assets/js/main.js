@@ -41,10 +41,7 @@
         calendar.weekline.find("div").css("color", color);
         calendar.datesBody.find(".today").css("color", "#00bdaa");
 
-        if (window.matchMedia("(max-width: 767px)").matches) { 
-            calendar.weekline.addClass("none");
-            calendar.datesBody.addClass("none");
-        }
+       
 
         // find elements (dates) to be clicked on each time
         // the calendar is generated
@@ -287,6 +284,10 @@
     b();
     c(month, year, 0);
     c(nextMonth, nextYear, 1);
+    if (window.matchMedia("(max-width: 767px)").matches) { 
+        weekline1.addClass("none");
+        datesBody1.addClass("none");
+    }
     switchButton.on("click", function () {
         var clicked = $(this);
         var generateCalendars = function (e) {
