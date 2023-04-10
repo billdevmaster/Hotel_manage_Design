@@ -9,7 +9,7 @@
         makeWeek(calendar.weekline);
         calendar.datesBody.empty();
         var calMonthArray = makeMonthArray(passed_month, passed_year);
-        var r = 0;
+        var r = 1;
         var u = false;
         while (!u) {
             if (daysArray[r] == calMonthArray[0].weekday) {
@@ -57,6 +57,7 @@
             calendar.datesBody.find('div').removeClass("selected");
             var whichCalendar = calendar.name;
             const clickedInfo = getClickedInfo(clicked, calendar);
+            console.log(clickedInfo)
             selectedDate = clickedInfo;
             clicked.addClass("selected");
             // firstClick = true;
@@ -246,13 +247,14 @@
         "November",
         "December"];
     var daysArray = [
-        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"];
+        "Saturday",
+        "Sunday",
+    ];
 
     var cal1 = $("#calendar_first");
     var calHeader1 = cal1.find(".calendar_header");
@@ -302,25 +304,42 @@
         datesBody1.addClass("none");
         HeaderTitle.text(selectedDate.date + " " + HeaderTitle.text())
     }
-    switchButton.on("click", function () {
-        var clicked = $(this);
-        var generateCalendars = function (e) {
-            var nextDatesFirst = getAdjacentMonth(month, year, e);
-            var nextDatesSecond = getAdjacentMonth(nextMonth, nextYear, e);
-            month = nextDatesFirst[0];
-            year = nextDatesFirst[1];
-            nextMonth = nextDatesSecond[0];
-            nextYear = nextDatesSecond[1];
-
-            c(month, year, 0);
-            c(nextMonth, nextYear, 1);
-        };
-        if (clicked.attr("class").indexOf("left") != -1) {
-            generateCalendars("previous");
+        switchButton.on("click", function () {
+            var clicked = $(this);
+        if (window.matchMedia("(max-width: 767px)").matches && weekline1.hasClass("none")) { 
+            const date = new Date(selectedDate.year + "-" + (selectedDate.month + 1) + "-" + selectedDate.date);
+            var nextDate = new Date(date);
+            if (clicked.attr("class").indexOf("left") != -1) { 
+                nextDate.setDate(date.getDate() - 1);
+            } else {
+                nextDate.setDate(date.getDate() + 1);
+            }
+            selectedDate = {
+                date: nextDate.getDate(),
+                month: nextDate.getMonth(),
+                year: nextDate.getFullYear(),
+            }
+            c(selectedDate.month, selectedDate.year, 0);
+            HeaderTitle.text(selectedDate.date + " " + i[selectedDate.month] + " " + selectedDate.year);
         } else {
-            generateCalendars("next");
+            var generateCalendars = function (e) {
+                var nextDatesFirst = getAdjacentMonth(month, year, e);
+                var nextDatesSecond = getAdjacentMonth(nextMonth, nextYear, e);
+                month = nextDatesFirst[0];
+                year = nextDatesFirst[1];
+                nextMonth = nextDatesSecond[0];
+                nextYear = nextDatesSecond[1];
+    
+                c(month, year, 0);
+                c(nextMonth, nextYear, 1);
+            };
+            if (clicked.attr("class").indexOf("left") != -1) {
+                generateCalendars("previous");
+            } else {
+                generateCalendars("next");
+            }
+            clickedElement = bothCals.find(".calendar_content").find("div");
         }
-        clickedElement = bothCals.find(".calendar_content").find("div");
     });
         
     HeaderTitle.on("click", function () {
@@ -331,12 +350,15 @@
                 weekline1.removeClass("none")
                 datesBody1.removeClass("none")
                 var arr = HeaderTitle.text().split(" ");
-                HeaderTitle.text(arr[1] + " " + arr[2])
+
+                HeaderTitle.text(i[selectedDate.month] + " " + selectedDate.year)
             } else {
                 weekline1.addClass("none")
                 datesBody1.addClass("none")
                 var arr = HeaderTitle.text().split(" ");
-                HeaderTitle.text(selectedDate.date + " " + HeaderTitle.text())
+                c(selectedDate.month, selectedDate.year, 0);
+                HeaderTitle.text(selectedDate.date + " " + i[selectedDate.month] + " " + selectedDate.year)
+                // HeaderTitle.text(selectedDate.date + " " + HeaderTitle.text())
                 // console.log(HeaderTitle.text())
             }
         }
