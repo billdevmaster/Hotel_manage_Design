@@ -14,3 +14,11 @@ table .thead-main tr th {
 	background-color: #7367F0 !important;
 	color: white
 }
+
+.calendar-section .calendar_weekdays.none {
+	display: none;
+}
+
+.calendar-section .calendar_content.none {
+	display: none;
+}

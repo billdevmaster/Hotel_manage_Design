@@ -41,6 +41,11 @@
         calendar.weekline.find("div").css("color", color);
         calendar.datesBody.find(".today").css("color", "#00bdaa");
 
+        if (window.matchMedia("(max-width: 767px)").matches) { 
+            calendar.weekline.addClass("none");
+            calendar.datesBody.addClass("none");
+        }
+
         // find elements (dates) to be clicked on each time
         // the calendar is generated
         var clicked = false;
@@ -125,7 +130,10 @@
             selectDates(selected);
         });
 
+       
     }
+        
+    
 
     function selectDates(selected) {
 			if (!$.isEmptyObject(selected)) {
@@ -250,6 +258,7 @@
     var bothCals = $(".calendar");
 
     var switchButton = bothCals.find(".calendar_header").find('.switch-month');
+    var HeaderTitle = bothCals.find(".calendar_header").find('h2');
 
     var calendars = {
         "cal1": {
@@ -298,6 +307,20 @@
         }
         clickedElement = bothCals.find(".calendar_content").find("div");
     });
+        
+    HeaderTitle.on("click", function () {
+        // mobile case
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            console.log(weekline1.hasClass("none"))
+            if (weekline1.hasClass("none")) {
+                weekline1.removeClass("none")
+                datesBody1.removeClass("none")
+            } else {
+                weekline1.addClass("none")
+                datesBody1.addClass("none")
+            }
+        }
+    })
 
 
     //  Click picking stuff
